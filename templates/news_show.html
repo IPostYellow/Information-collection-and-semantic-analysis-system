@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block scpipy %}
+<br>
+    {% if news %}
+    <div class="content" style="margin-top:0">
+        <div class="content-fluid">
+        <h4>爬取结果：</h4>
+     {% for each in news  %}
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ each }}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+{% endfor %}
+  <!--分页器--->
+<div>
+    <span class="blog_footer_tip">
+        共{{pages.count}}页评论。当前第{{data.number}}页，共{{pages.num_pages}}页
+    </span>
+    <ul class="pagination">
+{#         上一页，这里需要用到has_previous方法判断是否有上一页#}
+        <li>
+            <a href="?page=
+                {% if data.has_previous %}
+                    {{data.previous_page_number}}
+                {% else %}
+                    {{data.number}}
+                {% endif %}
+            " aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+{#         遍历所有页码#}
+        {% for page in pages.page_range %}
+            <li><a href="?page={{page}}">{{page}}</a></li>
+        {% endfor %}
+{#         下一页，这里需要用到has_next方法判断是否有下一页#}
+        <li>
+            <a href="?page=
+                {% if data.has_next %}
+                    {{data.next_page_number}}
+                {% else %}
+                    {{data.number}}
+                {% endif %}
+            " aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>
+{#    设置凸显当前的页码#}
+    <script type="text/javascript">
+        $(".pagination li:eq({{data.number}})").addClass("active");
+    </script>
+     <!--分页器结束--->
+    {% endif %}
+        </div>
+    </div>
+{% endblock %}

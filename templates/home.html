@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block main %}
+    <div class="content">
+    <form class="form-inline" role="form" method="get" action="/search/">{% csrf_token %}
+        <div>
+            <div class="input-group">
+                <input id="singer" placeholder="搜狐新闻搜索" type="text" class="form-control" name='singer' autocomplete="off" style="width: 735px">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit" ><span class="glyphicon glyphicon-search"></span>搜索</button>
+                </span>
+                </div><!-- /input-group -->
+        </div>
+    </form>
+</div>
+{% endblock %}

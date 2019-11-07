@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block main %}
+    <div class="content">
+    <form class="form-inline" role="form" method="post" action="/newscat/">{% csrf_token %}
+        <div>
+            <div class="input-group">
+                <textarea placeholder="待分类的新闻文本（目前分类为体育、财经、房产、家居、教育、科技、时尚、时政、游戏、娱乐）" class="form-control" name="newscate" autocomplete="off" style="height: 500px;width: 735px;resize: none;"></textarea>
+                </div><!-- /input-group -->
+            <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit" ><span class="glyphicon glyphicon-search"></span>分析</button>
+                </span>
+        </div>
+    </form>
+</div>
+{% endblock %}

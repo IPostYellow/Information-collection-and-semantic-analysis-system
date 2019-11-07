@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block main %}
+
+    {% if msg %}
+        <div class="content">
+            <h4>该新闻的分类为：{{ msg }}</h4>
+        </div>
+        {% else %}
+        <div class="content">
+            <h4>出错了</h4>
+        </div>
+    {% endif %}
+{% endblock %}

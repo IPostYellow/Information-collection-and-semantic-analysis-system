@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block main %}
+    <div class="content">
+    <form class="form-inline" role="form" method="get" action="#">{% csrf_token %}
+        <div>
+            <div class="input-group">
+                <textarea id="singer" placeholder="待抽取摘要的新闻文本" class="form-control" name='singer' autocomplete="off" style="height: 500px;width: 735px;resize: none;"></textarea>
+                </div><!-- /input-group -->
+            <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit" ><span class="glyphicon glyphicon-search"></span>分析</button>
+                </span>
+        </div>
+    </form>
+</div>
+{% endblock %}
